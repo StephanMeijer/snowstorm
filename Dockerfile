@@ -14,6 +14,8 @@ RUN mkdir /snomed-drools-rules
 
 RUN wget https://github.com/IHTSDO/snowstorm/releases/download/4.1.0/snowstorm-4.1.0.jar -O snowstorm.jar
 
+ADD Procfile .
+
 # Create the snowstorm user
 RUN addgroup -g $SGID snowstorm && \
     adduser -D -u $SUID -G snowstorm snowstorm
@@ -21,7 +23,7 @@ RUN addgroup -g $SGID snowstorm && \
 # Change permissions.
 RUN chown -R snowstorm:snowstorm /app
 
+RUN apk --no-cache add curl
+
 # Run as the snowstorm user.
 USER snowstorm
-
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "snowstorm.jar", "--elasticsearch.urls=http://localhost:9200"]
