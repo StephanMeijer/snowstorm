@@ -24,4 +24,4 @@ RUN chown -R snowstorm:snowstorm /app
 # Run as the snowstorm user.
 USER snowstorm
 
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "snowstorm.jar", "--elasticsearch.urls=http://elasticsearch:9200"]
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "snowstorm.jar", "--elasticsearch.urls=http://localhost:9200"]
