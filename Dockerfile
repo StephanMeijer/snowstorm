@@ -15,6 +15,7 @@ RUN mkdir /snomed-drools-rules
 RUN wget https://github.com/IHTSDO/snowstorm/releases/download/4.1.0/snowstorm-4.1.0.jar -O snowstorm.jar
 
 ADD Procfile .
+ADD nginx.conf.sigil .
 
 # Create the snowstorm user
 RUN addgroup -g $SGID snowstorm && \
